@@ -30,5 +30,3 @@ Ele abre em http://localhost:5173. Para gerar o arquivo único de novo, use `npm
 4. No Supabase, o banco do time já está montado. Os `.sql` servem para conferência ou para montar de novo: rode em ordem, pelo número.
 
 O schema `public`, com os dados de exemplo, é o do time.
-
-Login admin: 111.111.111-12. A senha Atlas2448@@.
