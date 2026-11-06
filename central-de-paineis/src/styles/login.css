@@ -1,0 +1,471 @@
+.brand {
+  --logo-size: 56px;
+
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  border-radius: 50%;
+  transition: padding 0.24s ease;
+}
+
+.brand-image {
+  display: block;
+  width: var(--logo-size);
+  height: var(--logo-size);
+  border-radius: 50%;
+  transition: width 0.24s ease, height 0.24s ease;
+}
+
+.brand--sidebar {
+  --logo-size: 96px;
+
+  padding: 3px;
+  background: #ffffff;
+  border: 1px solid transparent;
+}
+
+:root[data-theme="dark"] .brand--sidebar {
+  border-color: color-mix(in srgb, var(--side-ink) 45%, transparent);
+}
+
+/* o cartão de entrada nunca é branco, então a logo sempre vai numa placa branca */
+.brand--login {
+  --logo-size: 76px;
+
+  padding: 4px;
+  background: #ffffff;
+  border: 1px solid transparent;
+}
+
+:root[data-theme="dark"] .brand--login {
+  border-color: color-mix(in srgb, #ffffff 55%, transparent);
+}
+
+/* na tela de entrada a logo é o cabeçalho: grande e no centro (a imagem tem 200px, 168 ainda fica nítido) */
+.login-head--brand .brand--login {
+  --logo-size: 168px;
+
+  padding: 6px;
+  box-shadow: 0 12px 30px rgb(0 20 50 / 28%);
+}
+
+/* sem cor de fundo aqui, senão tampa a foto */
+.login {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 40px 16px;
+  background: radial-gradient(
+    1100px 520px at 50% -12%,
+    color-mix(in srgb, var(--gold) 22%, transparent),
+    transparent 70%
+  );
+}
+
+/* na entrada a foto aparece mais */
+body:has(.login)::before {
+  opacity: var(--photo-opacity-login);
+}
+
+/* cartão azul no claro e degradê no escuro, com texto branco. os campos têm as cores
+   próprias (--field-*) porque são brancos no claro, e os erros viram etiquetas brancas */
+.login-card {
+  --surface: var(--secondary);
+  --surface-sunken: #ffffff;
+  --surface-raised: #ffffff;
+  --ink: #ffffff;
+  --muted: #f1f4fa;
+  --line: rgb(255 255 255 / 30%);
+  --accent: #ffffff;
+  --link: #ffffff;
+  --positive: #dcf7e5;
+  --negative: #b83a32;
+  --field-ink: #121833;
+  --field-muted: #5c677d;
+  --field-placeholder: #8a93a6;
+  --error-bg: #ffffff;
+  --error-ink: #b83a32;
+  --error-line: rgb(184 58 50 / 35%);
+
+  width: 100%;
+  max-width: 430px;
+  padding: 30px clamp(20px, 5vw, 34px) 22px;
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 24px 60px rgb(18 24 51 / 30%);
+}
+
+:root[data-theme="dark"] .login-card {
+  --surface: #0e2b42;
+  --surface-sunken: #141a38;
+  --surface-raised: var(--brand-light);
+  --ink: #f1f3f9;
+  --muted: #e3e8f1;
+  --line: rgb(241 243 249 / 22%);
+  --accent: #8fbaff; /* o azul vivo some no degradê, então o foco é um azul claro */
+  --link: #cfe6ec;
+  --positive: #b5f0cb;
+  --negative: #ffd6d1;
+  --field-ink: #f1f3f9;
+  --field-muted: #a9b2c8;
+  --field-placeholder: #7d87a3;
+  --error-bg: #ffffff;
+  --error-ink: #b83a32;
+  --error-line: rgb(184 58 50 / 35%);
+
+  background: linear-gradient(160deg, #2e6875 0%, #1a4458 45%, #0e2b42 100%);
+  box-shadow: 0 24px 60px rgb(0 0 0 / 55%);
+}
+
+.login-card .input {
+  color: var(--field-ink);
+}
+
+.login-card .input::placeholder {
+  color: var(--field-placeholder);
+}
+
+.login-card .input-action {
+  color: var(--field-muted);
+}
+
+.login-card .input-action:hover {
+  background: color-mix(in srgb, var(--field-ink) 8%, transparent);
+  color: var(--field-ink);
+}
+
+.login-card .field-flag {
+  color: var(--field-muted);
+}
+
+.login-card .doc-switch-option[aria-pressed="true"] {
+  color: var(--field-ink);
+}
+
+.login-card .lang-picker-select {
+  color: var(--field-ink);
+}
+
+/* o idioma fica no rodapé do cartão, pra logo continuar sozinha em cima */
+.login-lang {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.login-card .field-error {
+  justify-self: start;
+  padding: 3px 9px;
+  border-radius: 7px;
+  background: var(--error-bg);
+  color: var(--error-ink);
+}
+
+.login-card .form-error {
+  background: var(--error-bg);
+  border-color: var(--error-line);
+  color: var(--error-ink);
+}
+
+.login-head {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+
+.login-head--brand {
+  justify-items: center;
+  margin-bottom: 26px;
+}
+
+.login-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.login-top .theme-text {
+  display: none;
+}
+
+.login-head h1 {
+  margin-top: 12px;
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.login-head p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.login-form {
+  display: grid;
+  gap: 18px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+  min-width: 0;
+}
+
+.field label {
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.input {
+  width: 100%;
+  padding: 11px 13px;
+  font: inherit;
+  color: var(--ink);
+  background: var(--surface-sunken);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.input::placeholder {
+  color: color-mix(in srgb, var(--muted) 75%, transparent);
+}
+
+.input[aria-invalid="true"] {
+  border-color: var(--negative);
+}
+
+.input-wrap {
+  position: relative;
+  display: flex;
+  min-width: 0;
+}
+
+.input-wrap .input {
+  padding-right: 46px;
+}
+
+.input-action {
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.input-action:hover {
+  color: var(--ink);
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
+}
+
+.field-error {
+  margin: 0;
+  color: var(--negative);
+  font-size: 0.86rem;
+  font-weight: 500;
+}
+
+.rules {
+  list-style: none;
+  margin: 2px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 3px;
+  font-size: 0.84rem;
+  color: var(--muted);
+}
+
+.rule {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.rule-mark {
+  width: 1em;
+  text-align: center;
+  flex: none;
+}
+
+.rule.is-ok {
+  color: var(--positive);
+}
+
+.btn--primary {
+  background: var(--cta);
+  border-color: var(--cta);
+  color: var(--cta-ink);
+  font-weight: 700;
+}
+
+.btn--primary:hover {
+  background: var(--cta-hover);
+  border-color: var(--cta-hover);
+}
+
+.login-submit {
+  margin-top: 4px;
+  padding: 12px 14px;
+  font-size: 1rem;
+}
+
+.login-note {
+  margin: 22px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.login-card--wide {
+  max-width: 600px;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+  min-width: 0;
+}
+
+.field-flag {
+  margin-left: 6px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: var(--surface-sunken);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+  vertical-align: middle;
+}
+
+.field-hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.form-error {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--negative) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--negative) 45%, transparent);
+  color: var(--negative);
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.form-error p {
+  margin: 0;
+}
+
+.form-error .btn {
+  margin-top: 10px;
+}
+
+.fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.fieldset legend {
+  padding: 0;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.address-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.address-grid .col-2 {
+  grid-column: span 2;
+}
+
+.address-grid .col-4 {
+  grid-column: span 4;
+}
+
+@media (max-width: 560px) {
+  .address-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .address-grid .col-2,
+  .address-grid .col-4 {
+    grid-column: auto;
+  }
+}
+
+.login-alt {
+  margin: 18px 0 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.link-btn {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--link);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.link-btn:hover {
+  color: var(--ink);
+}
+
+.select {
+  width: auto;
+  min-width: 9rem;
+  padding-right: 10px;
+  cursor: pointer;
+}
+
+.input--year {
+  width: 7.5rem;
+  flex: none;
+}
+
+.input--date {
+  width: auto;
+  min-width: 10.5rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}

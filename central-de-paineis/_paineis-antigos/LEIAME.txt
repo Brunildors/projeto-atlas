@@ -1,0 +1,9 @@
+﻿Painéis do modelo inicial (Financeiro, Infraestrutura e Marketing), tirados do app em 2026-10-09.
+Foram trocados pelas telas de capacidade do desafio iPORT (Utilização, Planejamento e Alertas).
+Ficam aqui, fora do src/, só para consulta: o build não os enxerga.
+Para trazer um de volta: mova o arquivo para src/pages (e o data/ correspondente para src/data)
+e registre o painel no src/dashboards.ts.
+
+tema-claro/: o interruptor de tema (ThemeToggle.tsx) e o lib/theme.ts, tirados em 2026-10-09 quando o app ficou só no tema escuro.
+components/: gráficos (barras, linhas, rosca, funil), medidor e tabela, que só os painéis antigos usavam.
+componentes-removidos/: o ProfileButton (o atalho de perfil do canto superior direito), tirado em 2026-10-09 com o design novo; o perfil continua abrindo pelo nome, no rodape da barra.
